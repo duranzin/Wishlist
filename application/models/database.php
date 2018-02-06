@@ -35,7 +35,7 @@ class DataBase extends CI_Model{
         $query=$this->db->get();
         if ($query->num_rows()==1)
             $data = $query->result_array();
-            return ($data[0]['id_product']);
+            return $data;
         return "";
     }
     
@@ -78,19 +78,17 @@ class DataBase extends CI_Model{
         }
     }
     
-    public function showList(){
+    public function loadWishlist($product){
         $this->load->model('product');
-        $list = array();
-        $this->db->select('');
-        $this->db->from('products');
-        $query=$this->db->get();
-
-        foreach($query->result() as $row){
-            $product = new Product();
-            $product->init_entry($row->id_product,$row->name, $row->description, $row->price, $row->img);
-            array_push($all, $product);
-        }
-        return $all;
+        $cont=0;
+        $all = array();
+        $sql = "SELECT `img` FROM `products` WHERE `ID` IN (".implode(',',$product).")";
+        $sql=$this->db->get();
+        $data = $sql->result_array();
+        print_r($data);
+        
+        // This is my last line.
+        
     }
      
 }
