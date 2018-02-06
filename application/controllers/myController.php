@@ -79,7 +79,12 @@ class MyController extends CI_Controller {
     }
     
     public function showList(){
-        // This is the last line.
+        $userlist = $this->input->post('user');
+        $data['user']=$userlist;
+        $dbList=new DataBase();
+        $myID=$dbList->idUser($userlist);
+        $idProducts=$dbList->idProduct($myID);
+        $loadList=$dbList->loadWishlist($idProducts);
     }
     
     public function addToList(){
