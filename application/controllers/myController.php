@@ -97,11 +97,9 @@ class MyController extends CI_Controller {
         if($myList==1){
             $this->load->view('default', $data);
         }else{
-            $data['error']=$myList;
+            $data['error']="You have that product in your WishList!";
             $this->load->view('default', $data);
         }
-        
-        // Here i have an error if i try to select a product that actually is in the list.
     }
     
 }
