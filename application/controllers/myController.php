@@ -100,7 +100,7 @@ class MyController extends CI_Controller {
             $this->load->view('default', $data);
         }
         
-        // Here i have an error if i try to select a product that actually are in the list.
+        // Here i have an error if i try to select a product that actually is in the list.
     }
     
 }
