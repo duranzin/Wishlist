@@ -87,6 +87,7 @@ class MyController extends CI_Controller {
         $this->load->model('product');
         $useradd=$this->input->post('user');
         $productadd=$this->input->post('prod');
+        $data['user']=$useradd;
         $dbList=new DataBase();
         $myID=$dbList->idUser($useradd);
         $products=$dbList->showProducts();
