@@ -64,14 +64,18 @@ class DataBase extends CI_Model{
     }
     
     public function myList($user, $product){
-        $data = array('id_user'=>$user,'id_product'=>$product);
-        try{
+        $this->db->select('*');
+        $this->db->from('list');
+        $this->db->where('id_user',$user);
+        $this->db->where('id_product',$product);
+        $query=$this->db->get();
+        if ($query->num_rows() > 0){
+            return 0;
+        }else{
+            $data = array('id_user'=>$user,'id_product'=>$product);
             $this->db->insert('list',$data);
             return 1;
-        }catch(Exception $e){
-            $mess='You have in your WishList that product!';
         }
-        return $mess;
     }
     
     public function showList(){
