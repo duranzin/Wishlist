@@ -6,10 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Hi <?php echo $user; ?></h1>
-    <br> - - > This is your Wish-List:
     <?php
-       // This is the last line. 
+        echo form_open('myController/showList');
+        echo '<h3>Welcome: '.$user.'</h3>';
+        echo '<h4>Open your Whish List:</h4>';
+        echo '<button type="submit" name="user" value="'.$user.'">Open</button>';
+        echo form_close();
     ?>
 </body>
 </html>
